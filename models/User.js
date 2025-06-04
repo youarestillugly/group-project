@@ -66,4 +66,4 @@ const User = sequelize.define('users', {
   },
 });
 
-module.exports = user;
+module.exports = User;
