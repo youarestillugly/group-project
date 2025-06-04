@@ -102,7 +102,7 @@ exports.postSignup = async (req, res) => {
     });
 
     // Verification email link
-    const verifyUrl = `http://localhost:3000/verify-email?token=${verificationToken}&email=${encodeURIComponent(email)}`;
+    const verifyUrl = `${BASE_URL}/verify-email?token=${verificationToken}&email=${encodeURIComponent(email)}`;
 
     await transporter.sendMail({
       from: `"CEMS" <${process.env.EMAIL_USER}>`,
