@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Events</title>
+  <link rel="stylesheet" href="/css/eventreg.css">
+  <style>
+    /* Success Card Styling */
+.success-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  font-size: 16px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+  </style>
+</head>
+<body>
+  <%- include('../partials/header') %>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <a href="/events" class="tab <%= activeTab === 'events' ? 'active' : '' %>">Event Details</a>
+    <% if (role === 'student') { %>
+      <a href="/eventreg" class="tab <%= activeTab === 'eventreg' ? 'active' : '' %>">Event Registration</a>
+    <% } %>
+    <% if (role === 'organizer') { %>
+      <a href="/eventcre" class="tab <%= activeTab === 'eventcre' ? 'active' : '' %>">Event Creation</a>
+    <% } %>
+  </div>
+
+  <!-- Success Message Card -->
+  <% if (successMessage) { %>
+    <div class="success-card">
+      <p><%= successMessage %></p>
+    </div>
+  <% } %>
+
+  <!-- Registration Form -->
+  <div class="form-container">
+    <h2>Register for an Event</h2>
+    <form action="/eventreg" method="POST" id="eventRegForm">
+
+      <label for="fullName">Full Name</label>
+      <input type="text" name="fullName" value="<%= fullName %>" readonly required>
+
+      <label for="gender">Gender</label>
+      <select name="gender" required>
+        <option value="">Select gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="course">Course</label>
+      <input type="text" name="course" value="<%= course %>" readonly required>
+
+      <label for="studentNumber">Student Number</label>
+      <input type="text" name="studentNumber" required>
+
+      <label for="email">Email</label>
+      <input type="email" name="email" value="<%= email %>" readonly required>
+
+      <label for="phone">Phone Number</label>
+      <input type="text" name="phone" required>
+
+      <label for="eventName">Event Name</label>
+      <select name="eventName" required>
+        <option value="">Select an event</option>
+        <% events.forEach(event => { %>
+          <option value="<%= event.title %>"><%= event.title %></option>
+        <% }) %>
+      </select>
+
+      <button type="submit">Register Event Now</button>
+    </form>
+    <p id="responseMsg"></p>
+  </div>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

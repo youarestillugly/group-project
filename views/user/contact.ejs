@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us - College Event Management</title>
+  <link rel="stylesheet" href="/css/contact.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <%- include('../partials/header') %>
+
+  <div class="contact-container">
+    <!-- Contact Info Box -->
+    <div class="contact-box">
+      <h2>Contact Us</h2>
+      <div class="info">
+        <i class="fas fa-envelope"></i>
+        <p>collegeeventmanagementbykinzinerzin@gmail.com</p>
+      </div>
+      <div class="info">
+        <i class="fas fa-phone"></i>
+        <p>+97517636792</p>
+      </div>
+      <div class="info">
+        <i class="fas fa-map-marker-alt"></i>
+        <p>Sherubtse College, Kanglung, Trashigang</p>
+      </div>
+    </div>
+
+    <!-- Feedback Form Box -->
+    <div class="feedback-box">
+      <h2>Feedback</h2>
+
+      <!-- Success Message -->
+      <% if (typeof success !== 'undefined') { %>
+        <p class="success-message" style="color: green; font-weight: bold; text-align: center;">
+          Thank you for your feedback!
+        </p>
+      <% } %>
+
+      <form action="/contact/submit" method="POST">
+        <input type="text" name="name" placeholder="Name" value="<%= typeof name !== 'undefined' ? name : '' %>" required>
+        <input type="email" name="email" placeholder="Enter your email" value="<%= typeof email !== 'undefined' ? email : '' %>" required>
+        <textarea name="message" rows="4" placeholder="Feedback" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

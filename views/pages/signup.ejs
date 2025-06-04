@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <title>Sign Up</title>
+</head>
+<body>
+  <div class="form-container">
+    <img src="/images/college-logo.png" alt="Logo" />
+    <h3>Create Your Account</h3>
+
+    <% if (typeof message !== 'undefined' && message) { %>
+      <p class="message" style="color:red;"><%= message %></p>
+    <% } %>
+
+    <form action="/signup" method="POST">
+      <input type="text" id="firstName" name="firstName" placeholder="First Name *" required />
+      <input type="text" id="lastName" name="lastName" placeholder="Last Name *" required />
+      <input type="email" id="email" name="email" placeholder="Email *" required />
+      <input type="password" id="password" name="password" placeholder="Password * (6+ characters)" minlength="6" required />
+
+      <select id="role" name="role" required>
+        <option value="">-- Select Role --</option>
+        <option value="student">Student</option>
+        <option value="organizer">Organizer</option>
+      </select>
+
+      <select id="course" name="course" disabled>
+        <option value="">-- Select Course --</option>
+        <option value="Physics">Bsc Physics</option>
+        <option value="Chemistry">Bsc Chemistry</option>
+        <option value="Mathematics">Bsc Mathematics</option>
+        <option value="Biology">Bsc Life Science</option>
+        <option value="DSDA">DSDA</option>
+        <option value="EPS">EPS</option>
+        <option value="DCPM">DCPM</option>
+        <option value="New Programme">New Programme</option>
+      </select>
+
+      <button type="submit">Sign Up</button>
+    </form>
+
+    <p>Already have an account? <a href="/login">Log in here</a>.</p>
+  </div>
+
+  <script>
+   const roleSelect = document.getElementById('role');
+  const courseSelect = document.getElementById('course');
+
+  function toggleCourse() {
+    if (roleSelect.value === 'student' || roleSelect.value === 'organizer') {
+      courseSelect.disabled = false;
+    } else {
+      courseSelect.disabled = true;
+      courseSelect.value = '';
+    }
+  }
+
+  roleSelect.addEventListener('change', toggleCourse);
+  window.onload = toggleCourse;
+
+  </script>
+</body>
+</html>

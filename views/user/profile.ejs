@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>User Profile - College Event Management System</title>
+  <link rel="stylesheet" href="/css/profile.css" />
+</head>
+<body>
+
+    <% if (!student) { %>
+  <h2>No Profile Added</h2>
+  <button onclick="location.href='/profile/add'">Add Profile</button>
+<% } else { %>
+  <h1>User Profile</h1>
+  <div>
+    <img src="<%= student.profilePic || '/images/default-profile.png' %>" width="150" />
+    <p><strong>Name:</strong> <%= student.name %></p>
+    <p><strong>Email:</strong> <%= student.email %></p>
+    <p><strong>Course:</strong> <%= student.course %></p>
+    <p><strong>Phone:</strong> <%= student.phone %></p>
+    <p><strong>Village:</strong> <%= student.village %></p>
+    <p><strong>Dzongkhag:</strong> <%= student.dzongkhag %></p>
+    <button onclick="location.href='/profile/edit'">Edit Profile</button>
+  </div>
+<% } %>
+
+</body>
+</html>

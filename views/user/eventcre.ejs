@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create Event</title>
+  <link rel="stylesheet" href="/css/eventcre.css" />
+  <style>
+    .success-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .popup-content {
+      background-color: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    .popup-content button {
+      margin-top: 15px;
+      padding: 8px 16px;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  
+  <%- include('../partials/header') %>
+
+  <div class="tabs">
+    <a href="/events" class="tab <%= activeTab === 'events' ? 'active' : '' %>">Event Details</a>
+    <% if (role === 'student') { %>
+      <a href="/eventreg" class="tab <%= activeTab === 'eventreg' ? 'active' : '' %>">Event Registration</a>
+    <% } %>
+    <% if (role === 'organizer') { %>
+      <a href="/eventcre" class="tab <%= activeTab === 'eventcre' ? 'active' : '' %>">Event Creation</a>
+    <% } %>
+  </div>
+
+  <% if (typeof success !== 'undefined' && success === '1') { %>
+    <div class="success-popup">
+      <div class="popup-content">
+        <p>✅ Event sent for admin approval</p>
+        <button onclick="document.querySelector('.success-popup').style.display='none'">OK</button>
+      </div>
+    </div>
+  <% } %>
+
+  <div class="container">
+    <h2>Create a new event</h2>
+    
+    <form class="event-form" action="/eventcre" method="POST" enctype="multipart/form-data">
+      <label>Event Name</label>
+      <input type="text" name="title" required />
+
+      <div class="row">
+        <div>
+          <label>Event Date</label>
+          <input type="date" name="date" required />
+        </div>
+        <div>
+          <label>Time</label>
+          <input type="time" name="time" required />
+        </div>
+      </div>
+
+      <label>Location</label>
+      <input type="text" name="location" required />
+
+      <label>Organizer</label>
+      <input type="text" name="organizer" required />
+
+      <label>Participants Required</label>
+      <input type="number" name="participants" min="1" required />
+
+      <label>Banner Image</label>
+      <input type="file" name="bannerImage" accept="image/*" />
+
+      <label>Description</label>
+      <textarea name="description" rows="4"></textarea>
+
+      <button type="submit">Create Event</button>
+    </form>
+  </div>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

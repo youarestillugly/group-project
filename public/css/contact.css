@@ -1,0 +1,149 @@
+/* Reset and base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f3f4f6;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Navbar styles */
+.navbar {
+  background: #004080;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo img {
+  width: 60px;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 6px 12px;
+  transition: background 0.3s ease;
+  border-radius: 5px;
+}
+
+
+/* Container styles */
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 3rem 5%;
+  gap: 2rem;
+}
+
+/* Contact Info Box */
+.contact-box,
+.feedback-box {
+  flex: 1;
+  min-width: 320px;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-box h2,
+.feedback-box h2 {
+  margin-bottom: 1.2rem;
+  color: #004080;
+}
+
+.contact-box .info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.contact-box .info i {
+  font-size: 1.2rem;
+  margin-right: 10px;
+  color: #004080;
+}
+
+/* Feedback form styles */
+.feedback-box form input,
+.feedback-box form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border 0.3s ease;
+}
+
+.feedback-box form input:focus,
+.feedback-box form textarea:focus {
+  border-color: #0066cc;
+  outline: none;
+}
+
+.feedback-box button {
+  background-color: #004080;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.feedback-box button:hover {
+  background-color: #0066cc;
+}
+
+/* Footer styles */
+footer {
+  background: #00264d;
+  color: #ddd;
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 3rem;
+}
+
+.footer-links a {
+  color: #ddd;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.social-icons {
+  margin-top: 1rem;
+}
+
+.social-icons img {
+  width: 24px;
+  margin: 0 8px;
+  transition: transform 0.2s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1);
+}
+
+.navbar nav ul li a.active {
+  border-bottom: 2px solid #f99b1d;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/about.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <%- include('../partials/header') %>
+<section class="hero-section">
+  <div class="hero-img">
+    <img src="/Images/college-campus.jpg" alt="College Building">
+  </div>
+  <div class="hero-text">
+    <h2>Bringing College Events to Life!</h2>
+    <p>At the heart of our platform lies a simple belief: every idea has the potential to become a memorable experience.</p>
+  </div>
+</section>
+
+<section class="mission-vision">
+  <h2>Who are we?</h2>
+  <p><em>Welcome to the College Event Management System, your ultimate solution for managing college events effortlessly.</em></p>
+  <div class="cards">
+    <div class="card">
+      <h3>Our Mission</h3>
+      <p>To enhance student engagement by providing a seamless event platform.</p>
+    </div>
+    <div class="card">
+      <h3>Our Vision</h3>
+      <p>To be the leading platform that simplifies college event organization.</p>
+    </div>
+  </div>
+</section>
+
+<section class="goals">
+  <h3>Our Goals</h3>
+  <div class="goal-list">
+    <div class="goal">✔ Streamline event organization</div>
+    <div class="goal">✔ Enhance student involvement</div>
+    <div class="goal">✔ Provide an accessible and innovative platform</div>
+    <div class="goal">✔ Encourage collaboration</div>
+    <div class="goal">✔ Evolve with new technology</div>
+  </div>
+</section>
+
+<section class="team">
+  <h3>About Our Team</h3>
+  <div class="team-members">
+    <% teamMembers.forEach(member => { %>
+      <div class="member-card">
+        <img src="/Images/<%= member.image %>" alt="<%= member.name %>" class="member-photo">
+        <h4><%= member.name %></h4>
+        <p class="role"><%= member.role %></p>
+      </div>
+    <% }) %>
+  </div>
+</section>
+
+  <%- include('../partials/footer') %>
+
+</body>
+</html>

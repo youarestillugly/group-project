@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Events</title>
+  <link rel="stylesheet" href="/css/events.css" />
+
+  <!-- Font Awesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-pIcF6DpUo3UkphQ64n+I+r1wVOrvJ6tOQ0al5zJ1aZ/YYEo7EnKUB1bKnSRV3U2QG0W6y2Rvzz0uP+klBuqHdA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+<body>
+  <%- include('../partials/header') %>
+  <button class="hamburger" id="hamburgerBtn">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <a href="/events" class="tab <%= activeTab === 'events' ? 'active' : '' %>">Event Details</a>
+    <% if (role === 'student') { %>
+      <a href="/eventreg" class="tab <%= activeTab === 'eventreg' ? 'active' : '' %>">Event Registration</a>
+    <% } %>
+    <% if (role === 'organizer') { %>
+      <a href="/eventcre" class="tab <%= activeTab === 'eventcre' ? 'active' : '' %>">Event Creation</a>
+    <% } %>
+  </div>
+
+  
+
+    <!-- Frontend live search input -->
+    <input
+      type="text"
+      id="liveSearchInput"
+      placeholder="Live search events by title..."
+      oninput="filterEvents()"
+      autocomplete="off"
+      style="padding: 8px; width: 250px; font-size: 16px;"
+    />
+  </section>
+
+  <!-- Events Grid -->
+  <section class="events-section">
+    <h2>Events</h2>
+    <div class="events-grid" id="eventsGrid">
+      <% all_events.forEach(event => { %>
+        <div class="event-card">
+          <img src="/uploads/<%= event.image %>" alt="<%= event.title || 'Event Image' %>" />
+          <h3 class="event-title"><%= event.title %></h3>
+          <a href="/events/<%= event.id %>" class="view-btn">View More</a>
+        </div>
+      <% }) %>
+    </div>
+  </section>
+
+  <%- include('../partials/footer') %>
+
+  <script>
+    function filterEvents() {
+      const searchValue = document.getElementById('liveSearchInput').value.toLowerCase();
+      const events = document.querySelectorAll('#eventsGrid .event-card');
+
+      events.forEach(event => {
+        const title = event.querySelector('.event-title').textContent.toLowerCase();
+        event.style.display = title.includes(searchValue) ? 'block' : 'none';
+      });
+    }
+  function toggleMenu() {
+      const nav = document.querySelector('header nav ul');
+      nav.classList.toggle('show');
+    }
+</script>
+
+</body>
+</html>

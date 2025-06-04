@@ -1,0 +1,210 @@
+
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: #fff;
+  gap: 2rem;
+}
+
+.hero-img img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+.hero-text {
+  max-width: 600px;
+}
+
+.hero-text h2 {
+  color: #114B8C;
+  margin-bottom: 1rem;
+}
+
+/* Mission & Vision */
+.mission-vision {
+  background: #eee;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.mission-vision .cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.card {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  margin-bottom: 1rem;
+  color: #114B8C;
+}
+
+/* Goals Section */
+.goals {
+  background: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.goal-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.goal {
+  background: #f7f7f7;
+  padding: 1rem;
+  border-radius: 8px;
+  width: 250px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Team Section */
+.team {
+  background: #eee;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.team h2 {
+  color: #114B8C;
+  margin-bottom: 1.5rem;
+}
+
+.team-members {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  scroll-behavior: smooth;
+}
+
+.team-members::-webkit-scrollbar {
+  height: 8px;
+}
+
+.team-members::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.member-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 180px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.member-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.member-card h4 {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: #114B8C;
+}
+
+/* Buttons */
+button {
+  background-color: #114B8C;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #f99b1d;
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  background-color: #114B8C;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.social-icons img {
+  width: 24px;
+  margin: 0 0.5rem;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text,
+  .hero-img {
+    max-width: 100%;
+  }
+
+  .mission-vision .cards,
+  .goal-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-members {
+    justify-content: flex-start;
+  }
+
+  .card,
+  .goal,
+  .member-card {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  footer {
+    padding: 1rem;
+  }
+
+  .social-icons {
+    margin-top: 0.5rem;
+  }
+}

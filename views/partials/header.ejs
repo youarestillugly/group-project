@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Navbar</title>
+  <link rel="stylesheet" href="css/header.css" />
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">
+    <a href="/"><img src="/Images/college-logo.png" alt="College Logo" /></a>
+  </div>
+
+  <!-- Hamburger Icon -->
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav class="nav-links">
+    <ul>
+      <li><a href="/user/home">Home</a></li>
+      <li><a href="/about">About Us</a></li>
+      <li><a href="/events">Event</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li>
+        <a href="/logout" title="Log Out">
+          <img src="/images/logout.png" alt="Logout" style="width: 20px; height: 15px;" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  function toggleMenu() {
+    const nav = document.querySelector(".nav-links");
+    nav.classList.toggle("active");
+  }
+</script>
+
+</body>
+</html>

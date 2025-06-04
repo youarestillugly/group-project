@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>College Event Management System</title>
+  <link rel="stylesheet" href="/css/landing.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <script src="/js/home.js"></script>
+</head>
+<body>
+  <header>
+      <%- include('../partials/header') %>
+  </header>
+
+  <div class="menu-toggle">&#9776;</div>
+
+  <section class="hero">
+    <img src="/images/college-campus.jpg" alt="College Building">
+    <div class="hero-text">
+      <h1>Welcome back, <%= studentName %>!</h1>
+      <p>
+        Events Management provides useful tools, information and resources to help create successful events. From simply offering ideas and guidance, to comprehensive event planning and management, our website is here to support the diverse needs of those coordinating events at Sherubtse College.
+      </p>
+    </div>
+  </section>  
+
+  <section class="introduction">
+    <p>College life isn’t just about lectures and assignments—it’s also about making memories, discovering passions, and connecting with amazing people. Don’t miss out—register and be part of the experience!</p>
+    <button onclick="location.href='/events'">Explore Events</button>
+  </section>
+
+  <section class="about">
+    <h2>About</h2>
+    <div class="about-cards">
+      <div class="card">
+        <h3>Our Mission</h3>
+        <p>To enhance student engagement by providing a seamless and user-friendly platform for event management.</p>
+      </div>
+      <div class="card">
+        <h3>Our Vision</h3>
+        <p>To be the leading platform that simplifies college event organization, fostering collaboration and creativity.</p>
+      </div>
+    </div>
+    <button onclick="location.href='/about'">More</button>
+  </section>
+
+  <section class="featured-events">
+    <h2>Featured Events</h2>
+    <div class="events">
+      <% events.forEach(event => { %>
+        <div class="event-card">
+          <img src="/uploads/<%= event.image %>" alt="<%= event.title %>">
+          <h3><%= event.title %></h3>
+          <p><%= event.date %></p>
+          <p><%= event.location %></p>
+        </div>
+      <% }) %>
+    </div>
+    <button onclick="location.href='/events'">View All Events</button>
+  </section>
+
+  
+  <%- include('../partials/footer') %>
+
+</body>
+</html>

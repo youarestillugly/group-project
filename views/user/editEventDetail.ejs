@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Event - <%= event.title %></title>
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/form.css"> <!-- optional, if you have a form.css -->
+</head>
+<style>
+  /* form.css */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.event-details {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.event-details h2 {
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: #222;
+  text-align: center;
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+  margin-top: 20px;
+}
+
+form input[type="text"],
+form input[type="datetime-local"],
+form input[type="number"],
+form textarea,
+form input[type="file"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.8px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+form input[type="text"]:focus,
+form input[type="datetime-local"]:focus,
+form input[type="number"]:focus,
+form textarea:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 25px;
+  background-color: #4a90e2;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background-color: #357ABD;
+}
+
+.back-btn {
+  background-color: #ccc;
+  margin-left: 10px;
+  color: #333;
+}
+
+.back-btn:hover {
+  background-color: #999;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .event-details {
+    margin: 20px;
+    padding: 20px;
+  }
+}
+
+</style>
+<body>
+
+  <%- include('../partials/header') %>
+
+  <section class="event-details">
+    <h2>Edit Event: <%= event.title %></h2>
+    <form action="/events/<%= event.id %>/edit" method="POST">
+  <label>Title:</label>
+  <input type="text" name="title" value="<%= event.title %>" required />
+
+  <label>Date:</label>
+  <input type="date" name="date" value="<%= event.date %>" required />
+
+  <label>Location:</label>
+  <input type="text" name="location" value="<%= event.location %>" required />
+
+  <label>Participants Required:</label>
+  <input type="number" name="participantsRequired" value="<%= event.participantsRequired %>" required />
+
+  <label>Organizer:</label>
+  <input type="text" name="organizer" value="<%= event.organizer %>" required />
+
+  <label>Description:</label>
+  <textarea name="description" required><%= event.description %></textarea>
+
+  <button type="submit">Update Event</button>
+</form>
+
+
+
+  </section>
+
+  <%- include('../partials/footer') %>
+
+</body>
+</html>

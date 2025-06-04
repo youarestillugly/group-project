@@ -1,0 +1,50 @@
+<!-- views/user/participants.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Participants</title>
+  <link rel="stylesheet" href="/css/participants.css">
+</head>
+<body>
+  <%- include('../partials/header') %>
+  <div class="tabs">
+    <a href="/events">Event Details</a>
+    <a href="/eventcre">Event Creation</a>
+    <a href="/participants" class="active-tab">Participants</a>
+  </div>
+
+  <div class="participant-table">
+    <h2>Registered Participants</h2>
+    <% if (participants && participants.length > 0) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Name</th>
+            <th>Student Number</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Course</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% participants.forEach(p => { %>
+            <tr>
+              <td><%= p.eventName %></td>
+              <td><%= p.fullName %></td>
+              <td><%= p.studentNumber %></td>
+              <td><%= p.email %></td>
+              <td><%= p.phone %></td>
+              <td><%= p.course %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p>No participants registered yet.</p>
+    <% } %>
+  </div>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

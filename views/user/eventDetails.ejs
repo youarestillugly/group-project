@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title> event Details</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/eventdetails.css">
+</head>
+<body>
+
+  <%- include('../partials/header') %>
+
+  <section class="event-details">
+    <h2><%= event.title %></h2>
+
+    <img src="/uploads/<%= event.image %>" alt="<%= event.title || 'Events Image' %>" class="event-image" />
+
+    <p><strong>Date:</strong>
+      <%= new Date(event.date).toLocaleString('en-GB', {
+        timeZone: 'Asia/Thimphu',
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+      }) %>
+    </p>
+
+    <p><strong>Location:</strong> <%= event.location %></p>
+    <p><strong>Participants Required:</strong> <%= event.participantsRequired %></p>
+    <p><strong>Organizer:</strong> <%= event.organizer %></p>
+    <p><strong>Description:</strong></p>
+    <p><%= event.description %></p>
+
+    <% if (role === 'organizer') { %>
+      <div class="organizer-actions">
+        <a href="/events/<%= event.id %>/volunteers" class="btn">View Volunteers</a>
+        <a href="/events/<%= event.id %>/edit" class="btn">Edit/Update Event</a>
+      </div>
+    <% } %>
+
+    <a href="/events" class="btn back-btn">← Back to Events</a>
+  </section>
+
+  <%- include('../partials/footer') %>
+
+</body>
+</html>

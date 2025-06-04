@@ -1,0 +1,23 @@
+.event-controls {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  margin: 20px 0;
+  
+}
+
+#liveSearchInput {
+  padding: 8px 12px;
+  width: 300px;
+  font-size: 16px;
+  margin-left: 450px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: border-color 0.3s ease;
+}
+
+#liveSearchInput:focus {
+  outline: none;
+  border-color: #007bff; /* blue border on focus */
+  box-shadow: 0 0 8px rgba(0,123,255,0.5);
+}
